@@ -3,7 +3,11 @@ orbs:
   node: circleci/node@3.0.0
   codecov: codecov/codecov@3.2.4
 workflows:
-  upload-to-codecov:
+                upload-to-codecov:
+                    jobs:
+                        - node/test:
+                            post-steps:
+                                - codecov/upload
 jobs:
   build:
     docker:
