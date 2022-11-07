@@ -10,7 +10,6 @@ jobs:
 
     steps:
       - checkout
-      - codecov/upload
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -30,8 +29,6 @@ jobs:
 
       - run: npm run test:coverage
 
-      - codecov/upload:
-          file: './coverage/clover.xml'
-
       - run: npm run build
+  upload-report:
 
