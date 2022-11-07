@@ -29,6 +29,8 @@ jobs:
 
       - run: npm run test:coverage
 
+      - codecov/upload:
+        token: CODECOV_TOKEN=106270ab-5b4f-4d73-b298-3a9d80172310
+
       - run: npm run build
-  upload-report:
 
