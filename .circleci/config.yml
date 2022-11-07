@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
-   codecov: codecov/codecov@3.2.4
+  codecov: codecov/codecov@3.2.4
 workflows:
   upload-to-codecov:
 jobs:
@@ -13,9 +13,6 @@ jobs:
 
     steps:
       - checkout
-      - node/test:
-          post-steps:
-            - codecov/upload
 
       # Download and cache dependencies
       - restore_cache:
