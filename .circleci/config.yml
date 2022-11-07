@@ -1,23 +1,17 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
-  codecov: codecov/codecov@3.2.4
-workflows:
-                upload-to-codecov:
-                    jobs:
-                        - node/test:
-                            post-steps:
-                                - codecov/upload
+  codecov: codecov/codecov@3.2.3
 jobs:
   build:
     docker:
-      - image: node:11.10.1s
+      - image: node:11.10.1
 
     working_directory: ~/repo
 
     steps:
       - checkout
-
+      - codecov/upload
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -40,6 +34,5 @@ jobs:
       - codecov/upload:
           file: './coverage/clover.xml'
 
-      
       - run: npm run build
 
