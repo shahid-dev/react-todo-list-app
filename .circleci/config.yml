@@ -1,7 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@3.0.0
-  codecov: codecov/codecov@1.0.2
+  codecov: codecov/codecov@3.2.3
 jobs:
   build:
     docker:
@@ -11,7 +10,6 @@ jobs:
 
     steps:
       - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -32,7 +30,7 @@ jobs:
       - run: npm run test:coverage
 
       - codecov/upload:
-          file: './coverage/clover.xml'
+        token: CODECOV_TOKEN=106270ab-5b4f-4d73-b298-3a9d80172310
 
       - run: npm run build
 
